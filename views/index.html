@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title><%=title%></title>
+    <style>
+        body{
+            background-color: #243447;
+            color: white;
+        }
+        .err>div{
+          border: solid 1px red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 class="col-5"><%=title%> App <%=captcha%></h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <form method="POST" action="/saveData" id="my-form">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        <input name="name" type="text" class="form-control" id="exampleInputName1" aria-describedby="NameHelp" placeholder="Enter Name"required autofocus pattern="[A-Za-z0-9]{3,}">
+                        <small id="NameHelp" class="form-text text-muted">Tell us your good name.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"required>
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input name="pwd"type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"required minlength="4">
+                      <small id="pwdHelp" class="form-text text-muted">Password must be 4+ characters long.</small>
+                    </div>
+                    <% if(captcha){ %>
+                      <div class="g-recaptcha <%= css %>" data-theme="dark" data-size="normal" data-sitekey="6LfOguUUAAAAAGHu91pHlyGHeB6N0YYsjKnMmtle"></div>
+                      <br>
+                    <% } %>  
+                    <button type="submit" class="btn btn-primary col-5">Submit</button>
+                  </form>
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</html>
